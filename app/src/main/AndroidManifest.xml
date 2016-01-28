@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.smarthome.client2"
+    android:versionCode="73"
+    android:versionName="2.0.0.15111271" > <!-- 68 1.1.0.15109162 -->
+    <!-- xmlns:tools="http://schemas.android.com/tools" -->
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <permission
+        android:name="com.smarthome.client2.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.smarthome.client2.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:name=".SmartHomeApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ico_new_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- tools:replace="android:icon,android:theme,android:label,android:name" -->
+        <!-- 开发时使用 -->
+        <!-- <meta-data -->
+        <!-- android:name="com.baidu.lbsapi.API_KEY" -->
+        <!-- android:value="stz9eZwVstztt4vA9auEX1Yl" /> -->
+        <!-- 出版本时使用 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Y1VG9lB6xi0dkYm38KCRjz87" />
+
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.MySettingActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SearchFamilyMember_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LeaveMsgFamily_V11"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchChatActivity_SM"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchAddStepTwo"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchAddStepOne"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchAddInputKeyId"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchAddConfirm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- Begin:Old phone adding steps -->
+        <activity
+            android:name=".activity.OldPhoneAddStepOne"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.OldPhoneAddStepTwo"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- End:Old phone adding steps -->
+
+        <!-- Begin:Student phone adding steps -->
+        <activity
+            android:name="com.smarthome.client2.activity.StudentPhoneAddStepOne"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.smarthome.client2.activity.StudentPhoneAddStepTwo"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <!-- End:Student phone adding steps -->
+
+
+        <activity
+            android:name=".activity.AddFamilyMember"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditFamilyName"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".zxing.CaptureActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SelectFamilyRelative"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.CreateNewNextSteps"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.IntroduceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity_sm"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".activity.FindPassWord"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.FamilyInfoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.FamilyInfoActivity_vii"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SetNewPwdActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WatchWhiteNameListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".unit.settings.ModifyPassWord"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".friendgroup.FriendGroup"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".friendgroup.FriendAddPhoto"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".friendgroup.MailListAddActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- <activity -->
+        <!-- android:name="com.smarthome.client2.activity.MainActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:label="@string/app_name" > -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.RunTypeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LocationAlarmClockActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.DisruptTypeOneTimePickActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.AlarmPickActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ClassesListDetailActivity_sm"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.FamilyListDetailActivity_sm"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LocationActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".activity.DisruptTypeOneActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.RelativePhoneActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LowPowerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".activity.ContactActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UserMessageDetailActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.WhiteSpaceActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SOSPhoneActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.OCAlarmActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.CameraDeviceList"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.CreateNewMember"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GpsSetUpActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.LBSSetUpActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GpsUploadActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ChangePhoneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GPSTypeTwoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GPSTypeTwoTimePickActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.DisruptTypeTwoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.DisruptTypeTwoTimePickActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GpsUploadType2Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.BindActivity_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.DeviceManagerment_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        SmartPhoneAddStepOne
+        <activity
+            android:name=".activity.SmartPhoneAddStepOne"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ListDeviceFunctionsActivity_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.DeviceFunctionWatchingCall_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditDeviceCode_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoNickname_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoSexy_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoTelphone_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoBirthday_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoWeigh_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UiEditUserInfoHeight_sm"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+        <service android:name=".service.NetStatusService" />
+
+        <activity
+            android:name=".familySchool.ui.LeaveMsgActivityFamily"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.LeaveMsgActivityTeacher"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.MsgTargetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.WriteMsgActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.SyllabusActivityFamily"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.ClassCircleActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.AttendanceActivityFamily"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.AttendanceActivityTeacher"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.AddOlderActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.SearchFamilyMember"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.UserInfoReadOrEditActivity_vii"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WatchHealthActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GPSTypeOneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.GPSTypeOneTimePickActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- e家测试 -->
+        <!-- <meta-data -->
+        <!-- android:name="UMENG_APPKEY" -->
+        <!-- android:value="559e2ce667e58e5e550013ca"/> -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55de75c3e0f55a7538002fc2" />
+        <!-- e家江苏电信 -->
+        <!-- <meta-data -->
+        <!-- android:name="UMENG_APPKEY" -->
+        <!-- android:value="54db14dcfd98c5ee380002b7" /> -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="abc" />
+
+        <activity
+            android:name=".familySchool.ui.SyllabusActivityTeacher"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <receiver android:name=".message.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".util.ExceptionReciver" >
+            <intent-filter>
+                <action android:name="com.smarthome.client2.sockettimeout" />
+                <action android:name="com.smarthome.client2.connectexception" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".message.MessageService"
+            android:exported="true"
+            android:permission="android.permission.INTERNET" />
+
+        <activity
+            android:name=".familySchool.ui.HomeworkActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.ScoreActivityFamily"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.ExamActivityTeacher"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.ScoreActivityTeacher"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.AnnouncementActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.CameraAddByIdActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.CameraMainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".familySchool.ui.ImageZoomActivity" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.ScoreInputActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.FbCustomActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".familySchool.ui.LookTargetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.smarthome.client2" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.smarthome.client2" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <receiver
+            android:name=".receiver.JiTuiReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.smarthome.client2" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="aff3f007267885123c71c612" />
+
+        <activity
+            android:name=".activity.CameraAddStepTwo"
+            android:label="@string/title_activity_camera_add_step_one" >
+        </activity>
+        <activity
+            android:name=".activity.CameraAddStepOne"
+            android:label="@string/title_activity_camera_add_step_one" >
+        </activity>
+    </application>
+
+</manifest>

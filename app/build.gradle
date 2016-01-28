@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+    defaultConfig {
+        applicationId "com.smarthome.client2"
+        minSdkVersion 16
+        targetSdkVersion 19
+        versionCode 73
+        versionName '2.0.0.15112111'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            jniDebuggable false
+            multiDexEnabled true
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+            multiDexEnabled true
+            minifyEnabled false
+            renderscriptDebuggable true
+        }
+    }
+
+    dexOptions {
+        incremental false
+        preDexLibraries = !rootProject.ext.ci
+    }
+
+    productFlavors {
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    useLibrary 'org.apache.http.legacy'
+
+}
+
+dependencies {
+    //actionBar库
+    compile files('libs/actionBarSherlock.jar')
+    //二维码扫描
+    compile files('libs/android-zxing-core-2.3.0.jar')
+    //百度地图
+    compile files('libs/baidumapapi_v3_3_0.jar')
+    compile files('libs/locSDK_5.01.jar')
+    // 凌拓手表库
+    compile files('libs/csslibrary_v1.7.3_official.jar')
+    compile files('libs/CSSSdk_3rd_v1.4.jar')
+    // 摄像头库
+    compile files('libs/IchanoViewerSdk30.jar')
+    // 极光推送
+    compile files('libs/jpush-sdk-release1.7.5.jar')
+
+    // 拼音转换库
+    compile files('libs/pinyin4j-2.5.0.jar')
+    //umeng...
+    compile files('libs/com.umeng.fb.v5.1.0.jar')
+    compile files('libs/umeng-analytics-v5.4.1.jar')
+    compile files('libs/umeng-update-v2.5.0.jar')
+
+    // IM客户端
+    compile files('libs/asmack-android-8-4.0.0.jar')
+    // http 协议
+    compile files('libs/httpmime-4.2.jar')
+
+    // compile files('libs/activityMeter.jar')
+
+//    compile rootProject.ext.dependencies["otto"]
+//    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["logging-interceptor"]
+
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    // rx and binding
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    // squareup
+
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp:okhttp:2.6.0'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.google.code.gson:gson:2.4'
+//    {
+//        exclude module: 'com.android.support:android-support-v4'
+//    }
+}
